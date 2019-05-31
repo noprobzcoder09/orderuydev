@@ -1,0 +1,97 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="m-portlet m-portlet--responsive-tablet-and-mobile">
+            <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                    <div class="m-portlet__head-title">
+                        <span class="m-portlet__head-icon">
+                            <i class="la la-repeat"></i>
+                        </span>
+                        <h3 class="m-portlet__head-text m--font-brand">
+                            Api Settings - Infusionsoft Account
+                        </h3>
+                    </div>
+                </div>
+                
+                <div class="m-portlet__head-tools">
+                  <button class="btn btn-primary pull-right" ng-click="reauth()"><i class="fa fa-key"></i> Re-Authenticate</button>
+                </div>
+            </div>
+
+            <div class="m-portlet__body card-body">
+
+              <div class="card text-center">
+                <div class="card-body">
+                  <h5 class="card-title">API Information</h5>
+
+                  <hr>
+                  
+                  <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="inputEmail4">App Name</label>
+                        <input type="text" readonly class="form-control" ng-model="api.app_name">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputPassword4">Version</label>
+                        <input type="text" readonly class="form-control" ng-model="api.version">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputPassword4">Legacy Key</label>
+                        <input type="text" readonly class="form-control" ng-model="api.legacy_key">
+                      </div>
+
+                    </div>
+
+                    <div class="form-row">
+                      <div class="form-group col-md-3">
+                        <label for="inputEmail4">Access Token</label>
+                        <input type="text" readonly class="form-control" ng-model="api.access_token">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPassword4">Refresh Token</label>
+                        <input type="text" readonly class="form-control" ng-model="api.refresh_token">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPassword4">Expires In</label>
+                        <input type="text" readonly class="form-control" ng-model="api.expires_in">
+                      </div>
+                      <div class="form-group col-md-3">
+                        <label for="inputPassword4">Token Type</label>
+                        <input type="text" readonly class="form-control" ng-model="api.token_type">
+                      </div>                      
+                    </div>
+                  </form>
+
+                  <hr>
+
+                  <div class="alert alert-<% alert.type %>" role="alert" ng-show="alert.visible">
+                    <% alert.message %>
+                  </div>
+
+                  <form>
+                    <div class="form-row">
+                      <div class="form-group col-md-4">
+                        <label for="inputEmail4">Client ID</label>
+                        <input type="text" class="form-control" ng-model="api.client_id">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputPassword4">Client Secret</label>
+                        <input type="text" class="form-control" ng-model="api.client_secret">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputPassword4">Redirect URL</label>
+                        <input type="text" class="form-control" ng-model="api.redirect_url">
+                      </div>
+                    </div>
+
+                    <hr>
+                    <button class="btn btn-primary pull-right" ng-click="saveApiSetting()">Save</button>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+        </div>
+    </div>
+</div>

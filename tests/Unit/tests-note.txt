@@ -1,0 +1,37 @@
+Issues found:
+
+User
+- [Create new user] error on unit test
+
+
+Meal
+    - Deleted meal id still veiwable on manual inputting into the browser like [http://localhost:8000/products/meals/edit/{deletedMealId}]
+    Screenshot: https://www.screencast.com/t/UFdV4VOvnQQq
+
+Customer 
+    - Add new card
+        - Error on adding new card when user details is empty
+
+    - Add Plan
+        Trigger: Saved & Bill Now, Saved & Bill at cutover buttons
+            - Error: {"success":false,"message":"Undefined offset: 0"}
+            Screenshot: https://www.screencast.com/t/NFyPsYc7
+
+            Caused: deleted "Delivery timings" are loaded
+
+    - Cancel Subscription
+        Not showing on Past Subscription lists
+        Screenshots:
+            https://www.screencast.com/t/RB77A7om
+            https://www.screencast.com/t/6YwMZye4Rie
+
+    - edit customer page
+        - datatables error: https://www.screencast.com/t/Z2dnZpjt
+
+
+Coupons - edit
+    - Laravel Error on viewing edit Coupon when products not in json format
+    Screenshot: https://www.screencast.com/t/pWw3MZrSNeX
+
+
+

@@ -1,0 +1,142 @@
+@extends('layouts.app')
+
+
+@section('breadcrumbs', Breadcrumbs::render('delivery-zone-all'))
+
+@section('content')
+
+<div class="m-content">
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="m-portlet m-portlet--responsive-tablet-and-mobile">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <span class="m-portlet__head-icon">
+                                <i class="flaticon-clipboard"></i>
+                            </span>
+                            <h3 class="m-portlet__head-text m--font-brand">
+                                Delivery Zone Masterlist
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="m-portlet__body card-body">
+                    <p>No Records Found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
+
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('/template/custom/datatables/datatables.bundle.css') }}">
+@endsection
+
+@section('script')
+    <script src="{{ asset('/template/custom/datatables/datatables.bundle.js') }}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function(){
+          $('.datatable').DataTable({responsive:true});
+          // $('.datatable').css({'border-collapse':'collapse !important'});
+          $('.datatable').attr('style', 'border-collapse: collapse !important');
+        });
+
+    </script>
+
+    <script type="text/javascript">
+            
+        var url = {
+            deleteUrl: "{{url($deleteUrl)}}/",
+            disabledUrl: "{{url($disabledUrl)}}/",
+            listAllUrl: "{{url($listAllUrl)}}"
+        }
+
+        $(document).ready( function() {
+            getMasterList();
+        });
+
+        function disabledData(_this, id, checked) {
+            var _this = $(_this);
+            System.blockUI(_this.closest('td'));
+            System.lazyLoading( function() {
+                System.setAjaxRequest(
+                    url.disabledUrl+id,
+                    {enabled: checked},
+                    'PATCH',
+                    function(response) {
+                        System.unblockUI();
+                        getMasterList();
+                    },
+                    function() {
+                        System.unblockUI();
+                        getMasterList();
+                    }
+                );
+            });
+        }
+
+        function getMasterList() {
+            System.blockUI($('.card-body'));
+            System.lazyLoading( function() {
+                System.setAjaxRequest(
+                    url.listAllUrl,
+                    '',
+                    'GET',
+                    function(response) {
+                        System.unblockUI();
+                        $('.datatable').DataTable().destroy();
+                        $('.card-body').html(response);
+                        $('.datatable').DataTable({responsive:true});
+                    },
+                    function() {
+                        System.unblockUI();
+                    },
+                    'HTML', true
+                );
+            });
+        }
+
+        function deleteData(_this, id) {
+            var _this = $(_this);
+            Alert.confirm(
+                'Delete','Are you sure you want to delete this?',
+                'Yes',
+                'No',
+                function(instance, toast) {
+                    System.blockUI(_this.closest('tr'));
+                    System.lazyLoading( function() {
+                        System.setAjaxRequest(
+                            url.deleteUrl+id,
+                            '',
+                            'DELETE',
+                            function(response) {
+                                System.unblockUI();
+                                if (response.success) {
+                                    getMasterList();
+                                    Alert.success('Deleted',response.message);
+                                } else {
+                                    Alert.error('Error',response.message, 'topRight');
+                                }
+                            },
+                            function() {
+                                System.unblockUI();
+                                Alert.error('Error',System.errorTextMessage, 'topRight');
+                            }
+                        );
+                    });
+                },
+                function(instance, toast) {
+
+                }
+            )
+        }
+        
+    </script>
+@endsection

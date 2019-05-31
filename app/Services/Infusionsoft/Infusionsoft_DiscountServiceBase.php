@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Services\Infusionsoft;
+use App\Services\Infusionsoft\Infusionsoft_Service;
+
+class Infusionsoft_DiscountServiceBase extends Infusionsoft_Service{
+
+    public static function getOrderTotalDiscount($discountId, Infusionsoft_App $app = null){
+        $params = array(
+            (int) $discountId
+        );
+
+        return parent::send($app, "DiscountService.getOrderTotalDiscount", $params);
+    }
+
+}

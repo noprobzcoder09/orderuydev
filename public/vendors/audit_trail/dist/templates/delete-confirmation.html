@@ -1,0 +1,35 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Confirmation</h4>
+        <button type="button" class="close" aria-hidden="true" ng-click="close()" style="color: #FFF;">
+            <i class="fa fa-times"></i>
+        </button>
+        
+    </div>
+    <div class="modal-body"> 
+    
+        <div class="row" ng-show="!alert.is_visible">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <div class="card card-accent-success mb-3" id="activity-details">
+                  <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">Before you delete this log, you must enter the password.</h6>
+                  </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <input type="password" class="form-control" ng-model="password" placeholder="Enter Password for Deletion">
+            </div>            
+
+        </div>
+
+        <div ng-show="alert.is_visible" class="alert alert-<% alert.status %>">
+            <p><% alert.message %></p>
+        </div>
+                    
+    </div>
+    <div class="modal-footer" ng-show="!alert.is_visible">
+        <a ng-if="!isLoading" class="btn btn-md btn-danger" ng-click="deleteNow()">DELETE!</a>
+    </div>
+</div>
+

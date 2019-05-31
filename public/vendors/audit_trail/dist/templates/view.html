@@ -1,0 +1,59 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h4 class="modal-title">Detailed Activity Log</h4>
+        <button type="button" class="close" aria-hidden="true" ng-click="close()" style="color: #FFF;">
+            <i class="fa fa-times"></i>
+        </button>
+        
+    </div>
+    <div class="modal-body"> 
+    
+        <div class="row">
+            <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+                <div class="card card-accent-success mb-3" id="activity-details">
+                  <div class="card-header">Activity Log Details</div>
+                  <div class="card-body">
+                    <h5 class="card-title"><% data.title %></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">By: <% data.user.name %> (<span style="padding: 5px 10px; font-size: 12px;" ng-class="roleClass(data.user.role)"><% data.user.role | firstLetterCapitalize %></span>) - <% data.created_at %></h6>
+                    <hr>
+                    <h6 class="card-subtitle mb-1 text-muted">Log Description</h6>
+                    <p class="card-text"><% data.description %></p>
+                    <hr>
+                    <h6 class="card-subtitle mb-1 text-muted">Additional Information</h6>
+                    <p class="card-text"><% data.additional_data %></p>
+
+                  </div>
+                </div>
+            </div>
+<!-- 
+            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                <div class="card card-accent-success mb-3" id="user-details">
+                    <div class="card-header">User Details</div>
+                    <div class="card-body">
+                        <h5 class="card-title"><% data.user.name %></h5>
+                        <p class="card-text"><span style="font-weight: bold;">Role</span>: <span style="padding: 5px 10px; font-size: 12px;" ng-class="roleClass(data.user.role)"><% data.user.role | firstLetterCapitalize %></span></p>
+                        <p class="card-text"><span style="font-weight: bold;">Email</span>: <span><% data.user.email %></p>
+                    </div>
+                </div>
+            </div>                    
+            
+            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4">
+                <div class="card card-accent-success mb-3" id="ip-address-details">
+                    <div class="card-header">IP Address Details</div>
+                    <div class="card-body">
+                        <p class="card-text"><span style="font-weight: bold;">IP</span>: <% data.ip_address %></p>
+                        <p class="card-text"><span style="font-weight: bold;">Device Type</span>: <% data.device_name %></p>
+                        <p class="card-text"><span style="font-weight: bold;">Browser</span>: <% data.browser_name %></p>
+                        <p class="card-text"><span style="font-weight: bold;">Browser Version</span>: <% data.browser_version %></p>
+                        <p class="card-text"><span style="font-weight: bold;">Operating System</span>: <% data.platform_name %></p>
+                        <p class="card-text"><span style="font-weight: bold;">Country</span>: <% data.country %></p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+                    
+    </div>
+<!--     <div class="modal-footer">
+        <a ng-if="!isLoading" class="btn dark btn-outline" ng-click="cancel()">Close</a>
+    </div> -->
+</div>
